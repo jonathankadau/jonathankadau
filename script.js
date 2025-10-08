@@ -1,25 +1,23 @@
-const input = document.getElementById('messageInput');
-const display = document.getElementById('messageDisplay');
+const projects = document.querySelectorAll('.project');
+const preview = document.getElementById('preview');
 
-input.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    const msg = input.value.trim();
-    if (!msg) return;
+projects.forEach(p => {
+  p.addEventListener('mousemove', (e) => {
+    const imgSrc = p.dataset.img;
+    preview.src = imgSrc;
+    preview.style.left = e.pageX + 20 + 'px';
+    preview.style.top = e.pageY + 20 + 'px';
+    preview.style.opacity = 1;
+    preview.classList.remove('hidden');
+  });
 
-    input.classList.add('hidden');
-    display.textContent = msg;
-    display.classList.remove('hidden');
-  }
-});
+  p.addEventListener('mouseleave', () => {
+    preview.style.opacity = 0;
+    setTimeout(() => preview.classList.add('hidden'), 200);
+  });
 
-display.addEventListener('click', () => {
-  display.classList.add('fade-out');
-  setTimeout(() => {
-    display.classList.add('hidden');
-    display.classList.remove('fade-out');
-    input.classList.remove('hidden');
-    input.value = '';
-    input.focus();
-  }, 400);
+  p.addEventListener('click', () => {
+    const url = p.dataset.url;
+    window.location.href = url;
+  });
 });
