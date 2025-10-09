@@ -68,7 +68,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2.0vh;
+  gap: 2.0em;
   padding-right: 8vw;
   z-index: 1;
 }
