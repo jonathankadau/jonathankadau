@@ -29,6 +29,7 @@ body {
 
 /* Architectural blue grid with fade + drift animation */
 .grid {
+  animation: gridFadeIn 1.8s ease forwards;
   position: absolute;
   top: 0;
   left: 0;
