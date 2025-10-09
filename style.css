@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap');
 
 body {
   margin: 0;
   padding: 0;
   background: #F7B267;
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; /* move content to right side */
   overflow: hidden;
   position: relative;
 }
 
-/* ✨ Grain overlay texture */
+/* Subtle noise overlay */
 .grain {
   pointer-events: none;
   position: absolute;
@@ -27,41 +27,40 @@ body {
   z-index: 0;
 }
 
-/* layout */
+/* Project list container */
 .projects {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  align-items: flex-end; /* align text to right edge */
+  gap: 1.2rem;
+  padding-right: 8vw;
   z-index: 1;
 }
 
-/* 🔠 Smaller, crisp text */
+/* Text styling */
 .project {
-  font-size: 3vw;                  /* smaller like the example */
-  font-weight: 700;
+  font-size: 2.5vw; /* smaller like your example */
+  font-weight: 600;
   text-transform: uppercase;
   color: white;
   letter-spacing: 0.05em;
-  padding: 0.5em 1em;
-  border: 2px solid transparent;   /* hidden by default */
+  padding: 0.4em 0.8em;
+  border: 2px solid transparent;
   transition: all 0.25s ease;
   cursor: pointer;
-
-  /* slight pixelation */
-  -webkit-font-smoothing: none;
-  image-rendering: pixelated;
+  -webkit-font-smoothing: none; /* make edges crisper */
+  text-rendering: geometricPrecision;
 }
 
-/* 🖱 Hover: white highlight + orange text */
+/* Hover effect */
 .project:hover {
   background: white;
   color: #F7B267;
   border-color: white;
 }
 
-/* preview image */
+/* Image preview on hover */
 #preview {
   position: fixed;
   width: 300px;
@@ -77,7 +76,7 @@ body {
   display: none;
 }
 
-/* ✨ optional fade-in animation for text */
+/* fade-in animation */
 .project {
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
@@ -85,6 +84,8 @@ body {
 .project:nth-child(1) { animation-delay: 0.2s; }
 .project:nth-child(2) { animation-delay: 0.4s; }
 .project:nth-child(3) { animation-delay: 0.6s; }
+.project:nth-child(4) { animation-delay: 0.8s; }
+.project:nth-child(5) { animation-delay: 1s; }
 
 @keyframes fadeIn {
   to { opacity: 1; }
