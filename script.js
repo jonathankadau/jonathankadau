@@ -28,15 +28,18 @@ projects.forEach((p, index) => {
 // -------------------
 let posX = 0;
 let posY = 0;
-let velocityX = 0.05;   // 🔧 auto drift speed
-let velocityY = 0.03;
+let velocityX = 0.03; // 🌊 base drift speed
+let velocityY = 0.02;
 let dragging = false;
 let lastX = 0;
 let lastY = 0;
 let inertiaX = 0;
 let inertiaY = 0;
-let inertiaStrength = 0.8; // 🔧 glide factor (0.5 = subtle, 0.9 = long)
+let inertiaStrength = 0.85; // ⚙️ drag "glide" strength
 let lastTime = 0;
+
+// ✅ make sure grid can receive events
+grid.style.pointerEvents = 'auto';
 
 // --- DRAG START ---
 grid.addEventListener('mousedown', (e) => {
@@ -46,7 +49,7 @@ grid.addEventListener('mousedown', (e) => {
   lastY = e.clientY;
   inertiaX = 0;
   inertiaY = 0;
-  e.preventDefault();
+  e.preventDefault(); // stops unwanted selections
 });
 
 // --- DRAG END ---
@@ -96,7 +99,7 @@ grid.addEventListener('touchmove', (e) => {
 }, { passive: true });
 
 // -------------------
-// SMOOTH LOOP (DRIFT + INERTIA)
+// ANIMATION LOOP (DRIFT + INERTIA)
 // -------------------
 function animateGrid(timestamp) {
   const delta = (timestamp - lastTime) || 16;
@@ -105,11 +108,11 @@ function animateGrid(timestamp) {
   if (!dragging) {
     posX += velocityX + inertiaX * 0.05;
     posY += velocityY + inertiaY * 0.05;
-    inertiaX *= 0.94; // friction
-    inertiaY *= 0.94;
+    inertiaX *= 0.93;
+    inertiaY *= 0.93;
   }
 
-  // move background infinitely
+  // use background position for infinite scroll illusion
   grid.style.backgroundPosition = `${posX}px ${posY}px`;
 
   requestAnimationFrame(animateGrid);
