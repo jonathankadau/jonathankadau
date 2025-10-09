@@ -92,8 +92,8 @@ grid.addEventListener('touchmove', (e) => {
   const dy = touch.clientY - lastY;
   posX += dx;
   posY += dy;
-  inertiaX = dx * inertiaStrength;
-  inertiaY = dy * inertiaStrength;
+  inertiaX = dx * 1.0;
+  inertiaY = dy * 1.0;
   lastX = touch.clientX;
   lastY = touch.clientY;
 }, { passive: true });
@@ -108,8 +108,8 @@ function animateGrid(timestamp) {
   if (!dragging) {
     posX += velocityX + inertiaX * 0.05;
     posY += velocityY + inertiaY * 0.05;
-    inertiaX *= 0.93;
-    inertiaY *= 0.93;
+    inertiaX *= 0.98;
+    inertiaY *= 0.98;
   }
 
   // use background position for infinite scroll illusion
