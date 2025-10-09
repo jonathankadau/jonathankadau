@@ -1,4 +1,6 @@
+/* === Retro Pixel Architecture Portfolio Styles === */
 
+/* 🎮 Import retro video game font */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
@@ -13,32 +15,23 @@ body {
   justify-content: flex-end;
   overflow: hidden;
   position: relative;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
 }
 
-
-/* Subtle grain */
-.grain {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
-  opacity: 0.50;
-  z-index: 0;
-}
-
-/* Architectural blue grid with fade + drift animation */
+/* 🟦 Architectural blue grid with fade + drift animation */
 .grid {
   position: absolute;
   top: 0;
   left: 0;
   width: 200%;
   height: 200%;
-  z-index: 0;
+  z-index: -1; /* sits behind everything */
   pointer-events: none;
   opacity: 0;
+  cursor: grab;
+  transition: transform 0.05s ease-out;
   background-image:
     linear-gradient(to right, rgba(0, 110, 255, 0.15) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 110, 255, 0.15) 1px, transparent 1px),
@@ -61,14 +54,21 @@ body {
   0% { transform: translate(0, 0); }
   100% { transform: translate(-100px, -100px); }
 }
-.grid {
-  cursor: grab;
-  transition: transform 0.05s ease-out; /* feels smoother while dragging */
+
+/* 🎞️ Subtle grain texture overlay */
+.grain {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: 0.5;
+  z-index: 0;
 }
 
-
-
-/* Right-aligned project list */
+/* 🧱 Right-aligned project list */
 .projects {
   position: relative;
   display: flex;
@@ -79,7 +79,7 @@ body {
   z-index: 1;
 }
 
-/* Default: white box around each project */
+/* 📦 Default: white box around each project */
 .project {
   font-size: 1.5vw;
   font-weight: 600;
@@ -91,18 +91,16 @@ body {
   padding: 0.4em 0.8em;
   transition: all 0.25s ease;
   cursor: pointer;
-  -webkit-font-smoothing: none;
-  text-rendering: geometricPrecision;
 }
 
-/* Hover: remove box, invert colors */
+/* 🔁 Hover: remove box, invert colors */
 .project:hover {
   background: transparent;
   color: white;
   border-color: transparent;
 }
 
-/* Shared preview image (rotates on hover) */
+/* 🖼️ Shared preview image (rotates on hover) */
 #preview {
   position: fixed;
   bottom: 8vh;
@@ -113,14 +111,14 @@ body {
   border-radius: 8px;
   opacity: 0;
   transition: opacity 0.5s ease, transform 0.4s ease;
-  box-shadow: 0 0 20px rgba(0,0,0,0.25);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 
 .hidden {
   display: none;
 }
 
-/* Smooth fade-in for each line */
+/* ✨ Smooth fade-in for each line */
 .project {
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
