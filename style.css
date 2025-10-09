@@ -14,6 +14,23 @@ body {
   position: relative;
 }
 
+
+/* Subtle architectural grid overlay */
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* stays behind everything */
+  background-image:
+    linear-gradient(to right, rgba(0, 110, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 110, 255, 0.15) 1px, transparent 1px);
+  background-size: 60px 60px; /* grid spacing */
+  pointer-events: none; /* don’t block clicks */
+}
+
+
 /* Subtle grain */
 .grain {
   pointer-events: none;
