@@ -4,17 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Architecture Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Blue grid background -->
-  <div class="grid"></div>
 
-  <!-- Subtle grain texture -->
+  <!-- ✅ Use correct rel and add favicon fallback -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- ✅ Preconnect to improve Google Fonts loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+  <!-- 🟦 Blue grid background (drifting + draggable) -->
+  <div class="grid" id="grid"></div>
+
+  <!-- 🌾 Subtle grain overlay -->
   <div class="grain"></div>
 
-  <!-- Project list -->
-  <div class="projects">
+  <!-- 🧱 Project list -->
+  <div class="projects" role="navigation" aria-label="Project links">
     <div class="project" data-img="projects/project1.jpg" data-url="project1.html">Project One</div>
     <div class="project" data-img="projects/project2.jpg" data-url="project2.html">Project Two</div>
     <div class="project" data-img="projects/project3.jpg" data-url="project3.html">Project Three</div>
@@ -22,9 +30,10 @@
     <div class="project" data-img="projects/project5.jpg" data-url="project5.html">Project Five</div>
   </div>
 
-  <!-- Preview image (changes on hover) -->
-  <img id="preview" class="hidden" />
+  <!-- 🖼️ Shared preview image -->
+  <img id="preview" class="hidden" alt="Project preview" />
 
+  <!-- ✅ Script at end for faster page load -->
   <script src="script.js"></script>
 </body>
 </html>
