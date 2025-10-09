@@ -11,7 +11,7 @@ projects.forEach((p, index) => {
     preview.src = imgSrc;
     preview.classList.remove('hidden');
     preview.style.opacity = 1;
-    preview.style.transform = `rotate(${(index - 2) * 2}deg)`; // small tilt
+    preview.style.transform = `rotate(${(index - 2) * 2}deg)`;
   });
 
   p.addEventListener('mouseleave', () => {
@@ -28,7 +28,7 @@ projects.forEach((p, index) => {
 // -------------------
 let offsetX = 0;
 let offsetY = 0;
-let velocityX = 0.04; // slow automatic drift
+let velocityX = 0.04; // automatic slow drift
 let velocityY = 0.03;
 let dragging = false;
 let lastX = 0;
@@ -45,6 +45,7 @@ grid.addEventListener('mousedown', (e) => {
   lastY = e.clientY;
   inertiaX = 0;
   inertiaY = 0;
+  e.preventDefault(); // ✅ prevents text selection interfering
 });
 
 // --- DRAG END ---
@@ -60,7 +61,7 @@ window.addEventListener('mousemove', (e) => {
   const dy = e.clientY - lastY;
   offsetX += dx;
   offsetY += dy;
-  inertiaX = dx * 0.6; // glide factor
+  inertiaX = dx * 0.6; // inertia multiplier
   inertiaY = dy * 0.6;
   lastX = e.clientX;
   lastY = e.clientY;
@@ -74,7 +75,7 @@ grid.addEventListener('touchstart', (e) => {
   lastY = touch.clientY;
   inertiaX = 0;
   inertiaY = 0;
-});
+}, { passive: true });
 
 grid.addEventListener('touchend', () => {
   dragging = false;
@@ -91,7 +92,7 @@ grid.addEventListener('touchmove', (e) => {
   inertiaY = dy * 0.6;
   lastX = touch.clientX;
   lastY = touch.clientY;
-});
+}, { passive: true });
 
 // -------------------
 // SMOOTH LOOP (DRIFT + INERTIA)
@@ -104,15 +105,16 @@ function animateGrid(timestamp) {
     offsetX += velocityX + inertiaX * 0.1;
     offsetY += velocityY + inertiaY * 0.1;
 
-    inertiaX *= 0.95;
+    inertiaX *= 0.95; // gradual slowdown
     inertiaY *= 0.95;
   }
 
-  // infinite looping illusion
-  if (offsetX > 300) offsetX = 0;
-  if (offsetX < -300) offsetX = 0;
-  if (offsetY > 300) offsetY = 0;
-  if (offsetY < -300) offsetY = 0;
+  // loop for infinite movement illusion
+  const limit = 600;
+  if (offsetX > limit) offsetX -= limit;
+  if (offsetX < -limit) offsetX += limit;
+  if (offsetY > limit) offsetY -= limit;
+  if (offsetY < -limit) offsetY += limit;
 
   grid.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 
