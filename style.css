@@ -30,10 +30,10 @@ body {
 /* ✅ Simplified: grid controlled entirely by JS (draggable + drifting) */
 .grid {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 10000%;
-  height: 10000%;
+  top: -500;
+  left: -500;
+  width: 1000%;
+  height: 1000%;
   z-index: 0;
   pointer-events: auto;
   cursor: grab;
