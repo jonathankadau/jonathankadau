@@ -35,7 +35,9 @@ body {
   width: 200%;
   height: 200%;
   z-index: 0;
-  pointer-events: none;
+  /* Allow clicking/dragging */
+  pointer-events: auto;
+  cursor: grab;
   opacity: 0;
   background-image:
     linear-gradient(to right, rgba(0, 110, 255, 0.15) 1px, transparent 1px),
@@ -43,24 +45,10 @@ body {
     linear-gradient(to right, rgba(0, 110, 255, 0.25) 1px, transparent 50px),
     linear-gradient(to bottom, rgba(0, 110, 255, 0.25) 1px, transparent 50px);
   background-size: 60px 60px, 60px 60px, 300px 300px, 300px 300px;
-  animation:
-    gridFadeIn 1.8s ease forwards,
-    gridDrift 28s linear infinite;
-  cursor: grab;
+  animation: gridFadeIn 1.8s ease forwards, gridDrift 28s linear infinite;
   transition: transform 0.05s ease-out;
 }
 
-/* Fade in the grid */
-@keyframes gridFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Slow diagonal drift motion */
-@keyframes gridDrift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-100px, -100px); }
-}
 
 /* Right-aligned project list */
 .projects {
