@@ -24,97 +24,98 @@ projects.forEach((p, index) => {
 });
 
 // -------------------
-// GRID DRAG + GLIDE LOGIC
+// GRID DRAG + DRIFT
 // -------------------
 let offsetX = 0;
 let offsetY = 0;
-let velocityX = 0.05; // base drift speed
+let velocityX = 0.04; // slow automatic drift
 let velocityY = 0.03;
-let drag = false;
+let dragging = false;
 let lastX = 0;
 let lastY = 0;
 let inertiaX = 0;
 let inertiaY = 0;
 let lastTime = 0;
 
-// 🖱️ Mouse support
+// --- DRAG START ---
 grid.addEventListener('mousedown', (e) => {
-  drag = true;
+  dragging = true;
   grid.style.cursor = 'grabbing';
   lastX = e.clientX;
   lastY = e.clientY;
   inertiaX = 0;
   inertiaY = 0;
-  e.preventDefault(); // prevent text selection
 });
 
+// --- DRAG END ---
 window.addEventListener('mouseup', () => {
-  drag = false;
+  dragging = false;
   grid.style.cursor = 'grab';
 });
 
+// --- DRAG MOVE ---
 window.addEventListener('mousemove', (e) => {
-  if (!drag) return;
+  if (!dragging) return;
   const dx = e.clientX - lastX;
   const dy = e.clientY - lastY;
   offsetX += dx;
   offsetY += dy;
-  inertiaX = dx * 0.9; // glide momentum
-  inertiaY = dy * 0.9;
+  inertiaX = dx * 0.6; // glide factor
+  inertiaY = dy * 0.6;
   lastX = e.clientX;
   lastY = e.clientY;
 });
 
-// 📱 Touch support
+// --- TOUCH SUPPORT ---
 grid.addEventListener('touchstart', (e) => {
-  drag = true;
+  dragging = true;
   const touch = e.touches[0];
   lastX = touch.clientX;
   lastY = touch.clientY;
   inertiaX = 0;
   inertiaY = 0;
-}, { passive: false });
+});
 
 grid.addEventListener('touchend', () => {
-  drag = false;
+  dragging = false;
 });
 
 grid.addEventListener('touchmove', (e) => {
-  if (!drag) return;
+  if (!dragging) return;
   const touch = e.touches[0];
   const dx = touch.clientX - lastX;
   const dy = touch.clientY - lastY;
   offsetX += dx;
   offsetY += dy;
-  inertiaX = dx * 0.9;
-  inertiaY = dy * 0.9;
+  inertiaX = dx * 0.6;
+  inertiaY = dy * 0.6;
   lastX = touch.clientX;
   lastY = touch.clientY;
-  e.preventDefault();
-}, { passive: false });
+});
 
 // -------------------
-// INFINITE LOOP + SMOOTH GLIDE
+// SMOOTH LOOP (DRIFT + INERTIA)
 // -------------------
 function animateGrid(timestamp) {
   const delta = (timestamp - lastTime) || 16;
   lastTime = timestamp;
 
-  if (!drag) {
-    // apply inertia and slow drift
+  if (!dragging) {
     offsetX += velocityX + inertiaX * 0.1;
     offsetY += velocityY + inertiaY * 0.1;
 
-    // gradually slow down inertia
     inertiaX *= 0.95;
     inertiaY *= 0.95;
   }
 
-  // create infinite seamless movement
-  if (offsetX > 300 || offsetX < -300) offsetX = 0;
-  if (offsetY > 300 || offsetY < -300) offsetY = 0;
+  // infinite looping illusion
+  if (offsetX > 300) offsetX = 0;
+  if (offsetX < -300) offsetX = 0;
+  if (offsetY > 300) offsetY = 0;
+  if (offsetY < -300) offsetY = 0;
 
   grid.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+
   requestAnimationFrame(animateGrid);
 }
 
