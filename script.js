@@ -28,14 +28,14 @@ projects.forEach((p, index) => {
 // -------------------
 let posX = 0;
 let posY = 0;
-let velocityX = 0.03; // 🌊 base drift speed
-let velocityY = 0.02;
+let velocityX = 0.08; // 🌊 base drift speed
+let velocityY = 0.05;
 let dragging = false;
 let lastX = 0;
 let lastY = 0;
 let inertiaX = 0;
 let inertiaY = 0;
-let inertiaStrength = 0.85; // ⚙️ drag "glide" strength
+let inertiaStrength = 0.91; // ⚙️ drag "glide" strength
 let lastTime = 0;
 
 // ✅ make sure grid can receive events
