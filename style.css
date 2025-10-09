@@ -61,6 +61,10 @@ body {
   0% { transform: translate(0, 0); }
   100% { transform: translate(-100px, -100px); }
 }
+.grid {
+  cursor: grab;
+  transition: transform 0.05s ease-out; /* feels smoother while dragging */
+}
 
 
 
