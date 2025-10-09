@@ -1,24 +1,19 @@
 const projects = document.querySelectorAll('.project');
 const preview = document.getElementById('preview');
 
-projects.forEach(p => {
-  // Hover image preview
-  p.addEventListener('mousemove', (e) => {
+projects.forEach((p, index) => {
+  p.addEventListener('mouseenter', () => {
     const imgSrc = p.dataset.img;
     preview.src = imgSrc;
-    preview.style.left = (e.pageX + 20) + 'px';
-    preview.style.top = (e.pageY + 20) + 'px';
-    preview.style.opacity = 1;
     preview.classList.remove('hidden');
+    preview.style.opacity = 1;
+    preview.style.transform = `rotate(${(index - 2) * 2}deg)`; // small tilt effect
   });
 
-  // Hide image when leaving
   p.addEventListener('mouseleave', () => {
     preview.style.opacity = 0;
-    setTimeout(() => preview.classList.add('hidden'), 200);
   });
 
-  // Click: navigate to project page
   p.addEventListener('click', () => {
     window.location.href = p.dataset.url;
   });
