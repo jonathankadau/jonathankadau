@@ -28,8 +28,8 @@ projects.forEach((p, index) => {
 // -------------------
 let posX = 0;
 let posY = 0;
-let velocityX = 0.08; // 🌊 base drift speed
-let velocityY = 0.05;
+let velocityX = 0.11; // 🌊 base drift speed
+let velocityY = 0.06;
 let dragging = false;
 let lastX = 0;
 let lastY = 0;
