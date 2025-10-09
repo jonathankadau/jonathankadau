@@ -51,6 +51,43 @@ background-size: 60px 60px, 60px 60px, 300px 300px, 300px 300px;
   z-index: 0;
 }
 
+/* Architectural blue grid with fade + drift animation */
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background-image:
+    linear-gradient(to right, rgba(0, 110, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 110, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 110, 255, 0.25) 1px, transparent 50px),
+    linear-gradient(to bottom, rgba(0, 110, 255, 0.25) 1px, transparent 50px);
+  background-size: 60px 60px, 60px 60px, 300px 300px, 300px 300px;
+  animation: gridFadeIn 1.8s ease forwards, gridDrift 40s linear infinite;
+}
+
+/* Fade in the grid */
+@keyframes gridFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slow diagonal drift motion */
+@keyframes gridDrift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100px, -100px);
+  }
+}
+
+
 /* Right-aligned project list */
 .projects {
   position: relative;
