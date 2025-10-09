@@ -2,7 +2,7 @@ const projects = document.querySelectorAll('.project');
 const preview = document.getElementById('preview');
 
 projects.forEach(p => {
-  // Hover: show preview image
+  // Show image preview near cursor
   p.addEventListener('mousemove', (e) => {
     const imgSrc = p.dataset.img;
     preview.src = imgSrc;
@@ -12,13 +12,13 @@ projects.forEach(p => {
     preview.classList.remove('hidden');
   });
 
-  // Move image with cursor
+  // Hide preview on mouse leave
   p.addEventListener('mouseleave', () => {
     preview.style.opacity = 0;
     setTimeout(() => preview.classList.add('hidden'), 200);
   });
 
-  // Click: go to project page
+  // Click: navigate to project page
   p.addEventListener('click', () => {
     const url = p.dataset.url;
     window.location.href = url;
