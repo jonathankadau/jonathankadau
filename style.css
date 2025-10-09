@@ -35,7 +35,7 @@ body {
   width: 200%;
   height: 200%;
   z-index: 0;
-  pointer-events: auto; /* ✅ needed for dragging */
+  pointer-events: auto;
   cursor: grab;
   opacity: 0;
   background-image:
@@ -44,22 +44,8 @@ body {
     linear-gradient(to right, rgba(0, 110, 255, 0.25) 1px, transparent 50px),
     linear-gradient(to bottom, rgba(0, 110, 255, 0.25) 1px, transparent 50px);
   background-size: 60px 60px, 60px 60px, 300px 300px, 300px 300px;
-  animation:
-    gridFadeIn 1.8s ease forwards,
-    gridDrift 40s linear infinite; /* ✅ both fade-in and drift */
-  transition: transform 0.05s ease-out; /* ✅ smoother when dragging */
-}
-
-/* Fade in the grid */
-@keyframes gridFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Slow diagonal drift motion */
-@keyframes gridDrift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-100px, -100px); }
+  animation: gridFadeIn 1.8s ease forwards; /* ✅ only fade in now */
+  transition: transform 0.05s ease-out;
 }
 
 /* Right-aligned project list */
