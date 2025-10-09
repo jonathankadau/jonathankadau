@@ -75,7 +75,7 @@ body {
 
 /* Default text (blue, no box) */
 .project {
-  font-size: 1.5vw;
+  font-size: 1.0vw;
   font-weight: 600;
   text-transform: uppercase;
   color: #006EFF;
