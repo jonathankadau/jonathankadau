@@ -3,8 +3,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #0d0d0d;
-  color: #fff;
+  background: #F7B267;          /* 🟠 your chosen background color */
+  color: #fff;                  /* default text color */
   font-family: 'Inter', sans-serif;
   height: 100vh;
   display: flex;
@@ -13,6 +13,7 @@ body {
   overflow: hidden;
 }
 
+/* main layout for your project titles */
 .projects {
   display: flex;
   flex-direction: column;
@@ -21,23 +22,30 @@ body {
   text-align: center;
 }
 
-/* 🔥 This makes the words BIG */
+/* 🔠 TEXT STYLE */
 .project {
-  font-size: 10vw;          /* ← adjust this value for size */
+  font-size: 10vw;              /* large responsive size */
   font-weight: 800;
+  color: white;                 /* white text */
   text-transform: uppercase;
   letter-spacing: -0.03em;
   cursor: pointer;
-  transition: color 0.2s ease, transform 0.2s ease;
+
+  /* makes edges crisp & slightly pixelated */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated; /* helps on some browsers */
+  
+  transition: transform 0.25s ease;
 }
 
-/* 🖱️ Hover effect (makes text interactive) */
+/* 🖱 hover interaction */
 .project:hover {
-  color: #aaa;
   transform: scale(1.05);
+  filter: brightness(85%);
 }
 
-/* 📸 Small floating preview image */
+/* preview image */
 #preview {
   position: fixed;
   width: 300px;
@@ -52,4 +60,3 @@ body {
 .hidden {
   display: none;
 }
-
