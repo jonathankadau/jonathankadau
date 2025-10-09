@@ -63,13 +63,14 @@ window.addEventListener('mousemove', (e) => {
 });
 
 // touch support
-grid.addEventListener('touchstart', (e) => {
+grid.addEventListener('mousedown', (e) => {
   drag = true;
-  const touch = e.touches[0];
-  lastX = touch.clientX;
-  lastY = touch.clientY;
+  grid.style.cursor = 'grabbing';
+  lastX = e.clientX;
+  lastY = e.clientY;
   inertiaX = 0;
   inertiaY = 0;
+  e.preventDefault(); // ✅ prevents text selection during drag
 });
 
 grid.addEventListener('touchend', () => (drag = false));
