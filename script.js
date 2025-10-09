@@ -26,15 +26,16 @@ projects.forEach((p, index) => {
 // -------------------
 // GRID DRAG + DRIFT
 // -------------------
-let offsetX = 0;
-let offsetY = 0;
-let velocityX = 0.04; // automatic slow drift
+let posX = 0;
+let posY = 0;
+let velocityX = 0.05;   // 🔧 auto drift speed
 let velocityY = 0.03;
 let dragging = false;
 let lastX = 0;
 let lastY = 0;
 let inertiaX = 0;
 let inertiaY = 0;
+let inertiaStrength = 0.8; // 🔧 glide factor (0.5 = subtle, 0.9 = long)
 let lastTime = 0;
 
 // --- DRAG START ---
@@ -45,7 +46,7 @@ grid.addEventListener('mousedown', (e) => {
   lastY = e.clientY;
   inertiaX = 0;
   inertiaY = 0;
-  e.preventDefault(); // ✅ prevents text selection interfering
+  e.preventDefault();
 });
 
 // --- DRAG END ---
@@ -59,10 +60,10 @@ window.addEventListener('mousemove', (e) => {
   if (!dragging) return;
   const dx = e.clientX - lastX;
   const dy = e.clientY - lastY;
-  offsetX += dx;
-  offsetY += dy;
-  inertiaX = dx * 0.6; // inertia multiplier
-  inertiaY = dy * 0.6;
+  posX += dx;
+  posY += dy;
+  inertiaX = dx * inertiaStrength;
+  inertiaY = dy * inertiaStrength;
   lastX = e.clientX;
   lastY = e.clientY;
 });
@@ -86,10 +87,10 @@ grid.addEventListener('touchmove', (e) => {
   const touch = e.touches[0];
   const dx = touch.clientX - lastX;
   const dy = touch.clientY - lastY;
-  offsetX += dx;
-  offsetY += dy;
-  inertiaX = dx * 0.6;
-  inertiaY = dy * 0.6;
+  posX += dx;
+  posY += dy;
+  inertiaX = dx * inertiaStrength;
+  inertiaY = dy * inertiaStrength;
   lastX = touch.clientX;
   lastY = touch.clientY;
 }, { passive: true });
@@ -102,21 +103,14 @@ function animateGrid(timestamp) {
   lastTime = timestamp;
 
   if (!dragging) {
-    offsetX += velocityX + inertiaX * 0.1;
-    offsetY += velocityY + inertiaY * 0.1;
-
-    inertiaX *= 0.95; // gradual slowdown
-    inertiaY *= 0.95;
+    posX += velocityX + inertiaX * 0.05;
+    posY += velocityY + inertiaY * 0.05;
+    inertiaX *= 0.94; // friction
+    inertiaY *= 0.94;
   }
 
-  // loop for infinite movement illusion
-  const limit = 600;
-  if (offsetX > limit) offsetX -= limit;
-  if (offsetX < -limit) offsetX += limit;
-  if (offsetY > limit) offsetY -= limit;
-  if (offsetY < -limit) offsetY += limit;
-
-  grid.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  // move background infinitely
+  grid.style.backgroundPosition = `${posX}px ${posY}px`;
 
   requestAnimationFrame(animateGrid);
 }
