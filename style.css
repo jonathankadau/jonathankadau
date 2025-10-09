@@ -81,7 +81,7 @@ body {
   color: White;
   background: transparent;
   border: 2px solid transparent;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.05rem;
   padding: 0.4em 0.8em;
   transition: all 0.25s ease;
   cursor: pointer;
