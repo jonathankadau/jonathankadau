@@ -27,7 +27,7 @@ body {
   z-index: 0;
 }
 
-/* Architectural blue grid with fade + drift animation */
+/* ✅ Simplified: grid controlled entirely by JS (draggable + drifting) */
 .grid {
   position: absolute;
   top: 0;
@@ -44,8 +44,14 @@ body {
     linear-gradient(to right, rgba(0, 110, 255, 0.25) 1px, transparent 50px),
     linear-gradient(to bottom, rgba(0, 110, 255, 0.25) 1px, transparent 50px);
   background-size: 60px 60px, 60px 60px, 300px 300px, 300px 300px;
-  animation: gridFadeIn 1.8s ease forwards; /* ✅ only fade in now */
-  transition: transform 0.05s ease-out;
+  animation: gridFadeIn 1.8s ease forwards; /* only fade in — no drift animation */
+  transition: transform 0.05s ease-out; /* smooth dragging feel */
+}
+
+/* Fade in the grid */
+@keyframes gridFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Right-aligned project list */
@@ -54,7 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2.4em; /* Increased vertical spacing */
+  gap: 2.4em;
   padding-right: 8vw;
   z-index: 1;
 }
