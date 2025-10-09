@@ -1,48 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  background: #F7B267;          /* 🟠 your chosen background color */
-  color: #fff;                  /* default text color */
-  font-family: 'Pixelify Sans', sans-serif;
+  background: #F7B267;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 
-/* main layout for your project titles */
+/* ✨ Grain overlay texture */
+.grain {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* layout */
 .projects {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
-  text-align: center;
+  gap: 2rem;
+  z-index: 1;
 }
 
-/* 🔠 TEXT STYLE */
+/* 🔠 Smaller, crisp text */
 .project {
-  font-size: 10vw;              /* large responsive size */
-  font-weight: 800;
-  color: white;                 /* white text */
+  font-size: 3vw;                  /* smaller like the example */
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  color: white;
+  letter-spacing: 0.05em;
+  padding: 0.5em 1em;
+  border: 2px solid transparent;   /* hidden by default */
+  transition: all 0.25s ease;
   cursor: pointer;
 
-  /* makes edges crisp & slightly pixelated */
+  /* slight pixelation */
   -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
-  image-rendering: pixelated; /* helps on some browsers */
-  
-  transition: transform 0.25s ease;
+  image-rendering: pixelated;
 }
 
-/* 🖱 hover interaction */
+/* 🖱 Hover: white highlight + orange text */
 .project:hover {
-  transform: scale(1.05);
-  filter: brightness(85%);
+  background: white;
+  color: #F7B267;
+  border-color: white;
 }
 
 /* preview image */
@@ -54,9 +70,22 @@ body {
   border-radius: 8px;
   opacity: 0;
   transition: opacity 0.2s ease;
-  z-index: 100;
+  z-index: 10;
 }
 
 .hidden {
   display: none;
+}
+
+/* ✨ optional fade-in animation for text */
+.project {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+.project:nth-child(1) { animation-delay: 0.2s; }
+.project:nth-child(2) { animation-delay: 0.4s; }
+.project:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
