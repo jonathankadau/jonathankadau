@@ -1,120 +1,92 @@
 const projects = document.querySelectorAll('.project');
-const preview = document.getElementById('preview');
 const grid = document.getElementById('grid');
+const introBox = document.getElementById('intro-box');
+const body = document.body;
 
 // -------------------
-// PROJECT PREVIEW LOGIC
+// Hover Interaction
 // -------------------
-projects.forEach((p, index) => {
+projects.forEach((p) => {
+  const bgColor = p.dataset.bg;
+  const gridColor = p.dataset.grid;
+  const text = p.dataset.text;
+
+  // Set hover color for text (via CSS variable)
+  p.style.setProperty('--hover-color', bgColor);
+
   p.addEventListener('mouseenter', () => {
-    const imgSrc = p.dataset.img;
-    preview.src = imgSrc;
-    preview.classList.remove('hidden');
-    preview.style.opacity = 1;
-    preview.style.transform = `rotate(${(index - 2) * 2}deg)`;
+    body.style.background = bgColor;
+
+    grid.style.backgroundImage = `
+      linear-gradient(to right, ${gridColor}33 1px, transparent 1px),
+      linear-gradient(to bottom, ${gridColor}33 1px, transparent 1px),
+      linear-gradient(to right, ${gridColor}66 1px, transparent 50px),
+      linear-gradient(to bottom, ${gridColor}66 1px, transparent 50px)
+    `;
+
+    introBox.querySelector('p').textContent = text;
+    introBox.style.color = gridColor;
+    introBox.style.borderColor = gridColor;
   });
 
   p.addEventListener('mouseleave', () => {
-    preview.style.opacity = 0;
-  });
-
-  p.addEventListener('click', () => {
-    window.location.href = p.dataset.url;
+    body.style.background = '#F7B267';
+    grid.style.backgroundImage = `
+      linear-gradient(to right, rgba(0, 110, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 110, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(to right, rgba(0, 110, 255, 0.25) 1px, transparent 50px),
+      linear-gradient(to bottom, rgba(0, 110, 255, 0.25) 1px, transparent 50px)
+    `;
+    introBox.querySelector('p').textContent =
+      'Welcome to my portfolio. This is an expression of myself through designed space, art, picture, and model. Thank you for visiting. (Dont forget to drag the grid around for a little while.)';
+    introBox.style.color = 'rgba(255,255,255,0.8)';
+    introBox.style.borderColor = 'rgba(255,255,255,0.3)';
   });
 });
 
 // -------------------
-// GRID DRAG + DRIFT
+// Grid Drag + Drift
 // -------------------
-let posX = 0;
-let posY = 0;
-let velocityX = 0.31; // 🌊 base drift speed
-let velocityY = 0.16;
+let posX = 0, posY = 0;
+let velocityX = 0.25, velocityY = 0.15;
 let dragging = false;
-let lastX = 0;
-let lastY = 0;
-let inertiaX = 0;
-let inertiaY = 0;
-let inertiaStrength = 0.91; // ⚙️ drag "glide" strength
-let lastTime = 0;
+let lastX = 0, lastY = 0;
+let inertiaX = 0, inertiaY = 0;
+let inertiaStrength = 0.9;
 
-// ✅ make sure grid can receive events
-grid.style.pointerEvents = 'auto';
-
-// --- DRAG START ---
 grid.addEventListener('mousedown', (e) => {
   dragging = true;
   grid.style.cursor = 'grabbing';
   lastX = e.clientX;
   lastY = e.clientY;
-  inertiaX = 0;
-  inertiaY = 0;
-  e.preventDefault(); // stops unwanted selections
 });
 
-// --- DRAG END ---
 window.addEventListener('mouseup', () => {
   dragging = false;
   grid.style.cursor = 'grab';
 });
 
-// --- DRAG MOVE ---
 window.addEventListener('mousemove', (e) => {
   if (!dragging) return;
   const dx = e.clientX - lastX;
   const dy = e.clientY - lastY;
   posX += dx;
   posY += dy;
-  inertiaX = dx * inertiaStrength;
-  inertiaY = dy * inertiaStrength;
+  inertiaX = dx;
+  inertiaY = dy;
   lastX = e.clientX;
   lastY = e.clientY;
 });
 
-// --- TOUCH SUPPORT ---
-grid.addEventListener('touchstart', (e) => {
-  dragging = true;
-  const touch = e.touches[0];
-  lastX = touch.clientX;
-  lastY = touch.clientY;
-  inertiaX = 0;
-  inertiaY = 0;
-}, { passive: true });
-
-grid.addEventListener('touchend', () => {
-  dragging = false;
-});
-
-grid.addEventListener('touchmove', (e) => {
-  if (!dragging) return;
-  const touch = e.touches[0];
-  const dx = touch.clientX - lastX;
-  const dy = touch.clientY - lastY;
-  posX += dx;
-  posY += dy;
-  inertiaX = dx * 1.0;
-  inertiaY = dy * 1.0;
-  lastX = touch.clientX;
-  lastY = touch.clientY;
-}, { passive: true });
-
-// -------------------
-// ANIMATION LOOP (DRIFT + INERTIA)
-// -------------------
-function animateGrid(timestamp) {
-  const delta = (timestamp - lastTime) || 16;
-  lastTime = timestamp;
-
+function animateGrid() {
   if (!dragging) {
     posX += velocityX + inertiaX * 0.05;
     posY += velocityY + inertiaY * 0.05;
-    inertiaX *= 0.98;
-    inertiaY *= 0.98;
+    inertiaX *= 0.95;
+    inertiaY *= 0.95;
   }
 
-  // use background position for infinite scroll illusion
   grid.style.backgroundPosition = `${posX}px ${posY}px`;
-
   requestAnimationFrame(animateGrid);
 }
 
