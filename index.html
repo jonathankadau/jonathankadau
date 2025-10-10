@@ -5,35 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Architecture Portfolio</title>
 
-  <!-- ✅ Use correct rel and add favicon fallback -->
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <!-- ✅ Preconnect to improve Google Fonts loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    /* Remove link underline and preserve text style */
+    a.project {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Keep hover logic consistent */
+    a.project:hover {
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- 🟦 Blue grid background (drifting + draggable) -->
+  <!-- 🟦 Drifting Grid Background -->
   <div class="grid" id="grid"></div>
 
-  <!-- 🌾 Subtle grain overlay -->
+  <!-- 🌾 Grain Overlay -->
   <div class="grain"></div>
 
-  <!-- 🧱 Project list -->
+  <!-- 🧱 Project List -->
   <div class="projects" role="navigation" aria-label="Project links">
-    <div class="project" data-img="projects/project1.jpg" data-url="project1.html">Project One</div>
-    <div class="project" data-img="projects/project2.jpg" data-url="project2.html">Project Two</div>
-    <div class="project" data-img="projects/project3.jpg" data-url="project3.html">Project Three</div>
-    <div class="project" data-img="projects/project4.jpg" data-url="project4.html">Project Four</div>
-    <div class="project" data-img="projects/project5.jpg" data-url="project5.html">Project Five</div>
+    <a 
+      href="projects/cataracta.html"
+      class="project" 
+      data-bg="gray" 
+      data-url="projects/cataracta.html"
+      data-grid="#00FF88"
+      data-text="Cataracta - form driving sustainable design, massing creates cataracta, or waterfalls.">
+      CATARACTA
+    </a>
+
+    <a 
+      href="projects/kyogre.html"
+      class="project" 
+      data-bg="#1A1A1A" 
+      data-grid="#F7B267"
+      data-text="Kyogre X-500 — a speculative archigram inspired machine which floats within the Pacific Ocean.">
+      KYOGRE X-500
+    </a>
+
+    <a 
+      href="projects/shell.html"
+      class="project" 
+      data-bg="#001133" 
+      data-grid="#FFFFFF"
+      data-text="Shell — A study on metabolism and details. Arrayed forms create depth of space.">
+      SHELL
+    </a>
+
+    <a 
+      href="projects/selected-arts.html"
+      class="project" 
+      data-bg="#ba3c3c" 
+      data-grid="#1F0318"
+      data-text="Selected Arts — explorations across mediums, photo, collage, drawing, etc.">
+      SELECTED ARTS
+    </a>
+
+    <a 
+      href="projects/whoami.html"
+      class="project" 
+      data-bg="#FFC0CB" 
+      data-grid="#000000"
+      data-text="Who Am I — just somone inspired by art, theory, and architecture.">
+      WHO AM I
+    </a>
   </div>
 
-  <!-- 🖼️ Shared preview image -->
-  <img id="preview" class="hidden" alt="Project preview" />
+  <!-- 📝 Floating Text Box -->
+  <div class="intro-box" id="intro-box">
+    <p>
+      Welcome to my portfolio. This is an expression of myself through designed space, art, picture, and model. 
+      Thank you for visiting. (Don't forget to drag the grid around for a little while.)
+    </p>
+  </div>
 
-  <!-- ✅ Script at end for faster page load -->
+  <!-- ✅ Script link at bottom -->
   <script src="script.js"></script>
 </body>
 </html>
