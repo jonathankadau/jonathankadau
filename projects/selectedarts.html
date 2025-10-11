@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selectedarts — Project</title>
+
+  <!-- Main site styles (for fonts etc.) -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Project-specific styles -->
+  <link rel="stylesheet" href="selectedarts.css">
+</head>
+<body>
+  <!-- 🟩 Moving Grid Background -->
+  <div class="grid" id="grid"></div>
+
+  <!-- Left sidebar with back button -->
+  <aside class="sidebar-left">
+    <a href="../index.html" class="back-button">← BACK</a>
+  </aside>
+
+  <!-- Main image gallery -->
+  <main class="gallery">
+    <img src="selectedarts1" alt="kyogre Concept Image">
+    <img src="https://i.postimg.cc/sDDvBNLs/CATARACTAupdated-03.png">
+    <img src="https://i.postimg.cc/m22tc5n7/CATARACTAupdated-01.png" alt="Cataracta Render">
+  </main>
+
+  <!-- Right text sidebar -->
+  <aside class="sidebar-right">
+    <div class="text-panel">
+      <h1>SELECTED ARTS</h1>
+      <p>
+        <strong>Cataracta</strong> explores the intersection of form, motion, and sustainability.  
+        The project uses parametric massing strategies to simulate the flow of waterfalls,  
+        transforming natural hydrodynamics into architectural geometry.
+      </p>
+      <p>
+        Designed through digital modeling and iterative simulations,  
+        Cataracta challenges the boundary between control and organic formation.
+      </p>
+    </div>
+  </aside>
+
+  <script>
+    // --- Moving draggable grid logic ---
+    const grid = document.getElementById('grid');
+    let posX = 0, posY = 0, velocityX = 0.25, velocityY = 0.15;
+    let dragging = false, lastX = 0, lastY = 0;
+
+    grid.addEventListener('mousedown', e => {
+      dragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      grid.style.cursor = 'grabbing';
+    });
+
+    window.addEvent
 
