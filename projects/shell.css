@@ -1,0 +1,96 @@
+/* --- Base layout --- */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #071532; /* medium gray-blue */
+  color: #ffffff;
+  font-family: Helvetica, Arial, sans-serif;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* --- Full-screen moving grid --- */
+.grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #071532;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.25) 1px, transparent 30px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 1px, transparent 60px);
+  background-size: 60px 60px, 60px 60px, 300px 300px, 300px 300px;
+  background-repeat: repeat;
+  z-index: 0;
+  cursor: grab;
+  will-change: background-position;
+  transition: background-image 0.3s ease;
+}
+
+/* --- Back button --- */
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  text-decoration: none;
+  color: #ffffff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  z-index: 10;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+  color: rgba(255, 255, 255, 0.8);
+  transform: translateX(-4px);
+}
+
+/* --- Gallery --- */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.gallery img {
+  width: 80vw;
+  max-width: 1400px;
+  height: auto;
+  border-radius: 0; /* perfectly rectangular */
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  margin-bottom: -6px; /* slight overlap removes visible grid lines */
+}
+
+/* --- Text Panel --- */
+
+  .sidebar-right {
+    position: fixed;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18vw;
+    max-width: 340px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    z-index: 5;
+    background: rgba(128, 128, 128, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 1rem;
+    border-radius: 8px;
+  }
