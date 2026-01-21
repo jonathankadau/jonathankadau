@@ -1,61 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selectedarts — Project</title>
+  <title>MAPSCAPE — Jonathan Kadau</title>
 
-  <!-- Main site styles (for fonts etc.) -->
-  <link rel="stylesheet" href="../style.css">
-
-  <!-- Project-specific styles -->
-  <link rel="stylesheet" href="selectedarts.css">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="mapscape.css" />
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
 </head>
-<body>
-  <!-- 🟩 Moving Grid Background -->
+
+<body class="project-page" data-bg="#1A1A1A" data-grid="#F7B267">
   <div class="grid" id="grid"></div>
+  <div class="grain"></div>
 
-  <!-- Left sidebar with back button -->
-  <aside class="sidebar-left">
-    <a href="../index.html" class="back-button">← BACK</a>
-  </aside>
+  <header class="project-topbar">
+    <a class="back-link project" href="../index.html">← BACK</a>
+  </header>
 
-  <!-- Main image gallery -->
-  <main class="gallery">
-    <img src="selectedarts1" alt="kyogre Concept Image">
-    <img src="https://i.postimg.cc/sDDvBNLs/CATARACTAupdated-03.png">
-    <img src="https://i.postimg.cc/m22tc5n7/CATARACTAupdated-01.png" alt="Cataracta Render">
-  </main>
+  <div class="project-shell">
+    <!-- Left column -->
+    <aside class="project-meta">
+      <h1 class="project-title">MAPSCAPE</h1>
 
-  <!-- Right text sidebar -->
-  <aside class="sidebar-right">
-    <div class="text-panel">
-      <h1>SELECTED ARTS</h1>
-      <p>
-        <strong>Cataracta</strong> explores the intersection of form, motion, and sustainability.  
-        The project uses parametric massing strategies to simulate the flow of waterfalls,  
-        transforming natural hydrodynamics into architectural geometry.
+      <div class="project-facts">
+        <p><span class="label">Type</span><span class="value"> Studio, UNCC - Spring 2025</span></p>
+        <p><span class="label">Focus</span><span class="value"> Maps as a process</span></p>
+        <p><span class="label">Group</span><span class="value"> Franklin Bell, Tom Wileman</span></p>
+        <p><span class="label">Professor</span><span class="value"> Peter Wong, Jeffery Balmer</span></p>
+      </div>
+
+      <p class="project-description">
+        Mapscape is a product of using 3 maps from Rome throughout time to create geometry and space.
+        The program is a space for anyone to come see stored important maps. The project takes up a
+        small piazza in Trastevere, Rome. Our design uses large encasements that create space and float
+        throughout the building — not only holding the maps, but also acting as masses mined out of the
+        maps used in our design process.
       </p>
-      <p>
-        Designed through digital modeling and iterative simulations,  
-        Cataracta challenges the boundary between control and organic formation.
+
+      <p class="project-description muted">
+        The project draws from Neil Denari's early work as well as Bernard Tschumi.
       </p>
-    </div>
-  </aside>
+    </aside>
 
-  <script>
-    // --- Moving draggable grid logic ---
-    const grid = document.getElementById('grid');
-    let posX = 0, posY = 0, velocityX = 0.25, velocityY = 0.15;
-    let dragging = false, lastX = 0, lastY = 0;
+    <!-- Right column -->
+    <main class="project-media">
+      <figure class="media-block">
+        <img src="MAPSCAPE MAP DRAWING.jpg" alt="Map diagram drawing" loading="lazy">
+        <figcaption>01 — MAP DIAGRAM</figcaption>
+      </figure>
 
-    grid.addEventListener('mousedown', e => {
-      dragging = true;
-      lastX = e.clientX;
-      lastY = e.clientY;
-      grid.style.cursor = 'grabbing';
-    });
+      <figure class="media-block">
+        <img src="MAPSCAPE MAPS TO MASS.jpg" alt="Mass forming diagram" loading="lazy">
+        <figcaption>02 — MASS FORMING DIAGRAM</figcaption>
+      </figure>
 
-    window.addEvent
+      <div class="media-text">
+        <p>
+          This moment in the project marks a shift from mapping as reference to mapping as generator.
+          The drawings below focus on how diagrammed cartography becomes volumetric enclosure and public space.
+        </p>
+      </div>
 
+      <figure class="media-block">
+        <img src="MAPSCAPE PERSPECTIVE 1.jpg" alt="Mapscape perspective 1" loading="lazy">
+        <figcaption>03 — MAPSCAPE PERSPECTIVE 1</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="MAPSCAPE SECTION.png" alt="Section drawing" loading="lazy">
+        <figcaption>04 — SECTION DRAWING</figcaption>
+      </figure>
+
+      <!-- Everything below stays inside this same <main> -->
+      <div class="media-text">
+        <p>
+          The following drawings expand the project’s internal logic—process, cut, and plan—showing how
+          the encasements organize circulation and the piazza condition.
+        </p>
+      </div>
+
+      <figure class="media-block">
+        <img src="MAPSCAPE PROCESS DIAGRAM.jpg" alt="Process diagram" loading="lazy">
+        <figcaption>05 — PROCESS DIAGRAM</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="MAPSCAPE AXON CUT.jpg" alt="Section axon" loading="lazy">
+        <figcaption>06 — SECTION AXON</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="MAPSCAPE PLANS.jpg" alt="Plans" loading="lazy">
+        <figcaption>07 — PLANS</figcaption>
+      </figure>
+    </main>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
