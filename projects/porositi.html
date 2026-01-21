@@ -1,60 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shell — Project</title>
+  <title>POROSITI — Jonathan Kadau</title>
 
-  <!-- Main site styles (for fonts etc.) -->
-  <link rel="stylesheet" href="../style.css">
+  <!-- Main site styles -->
+  <link rel="stylesheet" href="../style.css" />
 
-  <!-- Project-specific styles -->
-  <link rel="stylesheet" href="shell.css">
+  <!-- Project styles -->
+  <link rel="stylesheet" href="porositi.css" />
+
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
 </head>
-<body>
-  <!-- 🟩 Moving Grid Background -->
+
+<body class="project-page">
+  <!-- Background -->
   <div class="grid" id="grid"></div>
+  <div class="grain"></div>
 
-  <!-- Left sidebar with back button -->
-  <aside class="sidebar-left">
-    <a href="../index.html" class="back-button">← BACK</a>
-  </aside>
+  <!-- Top navigation -->
+  <header class="project-topbar">
+    <a class="back-link project" href="../index.html">← BACK</a>
+  </header>
 
-  <!-- Main image gallery -->
-  <main class="gallery">
-    <img src="SHELL1.png" alt="kyogre Concept Image">
-    <img src="https://i.postimg.cc/sDDvBNLs/CATARACTAupdated-03.png">
-    <img src="https://i.postimg.cc/m22tc5n7/CATARACTAupdated-01.png" alt="Cataracta Render">
-  </main>
+  <!-- Main shell -->
+  <div class="project-shell">
 
-  <!-- Right text sidebar -->
-  <aside class="sidebar-right">
-    <div class="text-panel">
-      <h1>SHELL</h1>
-      <p>
-        <strong>Cataracta</strong> explores the intersection of form, motion, and sustainability.  
-        The project uses parametric massing strategies to simulate the flow of waterfalls,  
-        transforming natural hydrodynamics into architectural geometry.
+    <!-- Left column -->
+    <aside class="project-meta">
+      <h1 class="project-title">POROSITI</h1>
+
+      <div class="project-facts">
+        <p><span class="label">Type</span><span class="value"> Studio, SCI-ARC 2GAX — Fall 2025</span></p>
+        <p><span class="label">Focus</span><span class="value"> Porous multifunctional space</span></p>
+        <p><span class="label">Group</span><span class="value"> Jacob Lehrer</span></p>
+        <p><span class="label">Professor</span><span class="value"> Jenny Wu</span></p>
+      </div>
+
+      <p class="project-description">
+        Porositi is a multifunctional spatial system accommodating a street market, hotel rooms,
+        offices, lab space, a restaurant, and shared public programs. Its porosity allows these
+        spaces to interlock and remain visually and spatially connected, giving occupants a
+        heightened awareness of circulation, infrastructure, and program.
       </p>
-      <p>
-        Designed through digital modeling and iterative simulations,  
-        Cataracta challenges the boundary between control and organic formation.
+
+      <p class="project-description muted">
+        The project is located in Lincoln Heights and reimagines the historic Lincoln Heights Jail
+        through a process of renovation, demolition, and replacement. Positioned adjacent to the
+        LA River, the site negotiates industrial surroundings, residential edges, and the memory
+        of a displaced street food market as an active architectural driver.
       </p>
-    </div>
-  </aside>
+    </aside>
 
-  <script>
-    // --- Moving draggable grid logic ---
-    const grid = document.getElementById('grid');
-    let posX = 0, posY = 0, velocityX = 0.25, velocityY = 0.15;
-    let dragging = false, lastX = 0, lastY = 0;
+    <!-- Right column -->
+    <main class="project-media">
 
-    grid.addEventListener('mousedown', e => {
-      dragging = true;
-      lastX = e.clientX;
-      lastY = e.clientY;
-      grid.style.cursor = 'grabbing';
-    });
+      <figure class="media-block">
+        <img src="POROSITI MODEL PIC 3.jpg" alt="Porositi chunk model" loading="lazy">
+        <figcaption>01 — CHUNK MODEL 1</figcaption>
+      </figure>
 
-    window.addEvent
+      <figure class="media-block">
+        <img src="POROSITI PROCESS DIAGRAM.png" alt="Porositi process diagram" loading="lazy">
+        <figcaption>02 — DESIGN PROCESS DIAGRAM</figcaption>
+      </figure>
+
+      <div class="media-text">
+        <p>
+          This moment marks the transition from aggregate massing to porous sectional logic,
+          where infrastructure and circulation carve space rather than occupy it.
+        </p>
+      </div>
+
+      <figure class="media-block">
+        <img src="POROSITI SECTION.png" alt="Porositi section" loading="lazy">
+        <figcaption>03 — SECTION</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="POROSITI UPPER PLAN.png" alt="Upper level plan" loading="lazy">
+        <figcaption>04 — UPPER LEVEL PLAN</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="POROSITI AXON.png" alt="Porositi axon" loading="lazy">
+        <figcaption>05 — AXON OF CHUNK</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="POROSITI GROUND PLAN.png" alt="Ground level plan" loading="lazy">
+        <figcaption>06 — GROUND LEVEL PLAN</figcaption>
+      </figure>
+
+      <div class="media-text">
+        <p>
+          The following images document physical model studies that test scale, porosity,
+          and spatial continuity across the system.
+        </p>
+      </div>
+
+      <figure class="media-block">
+        <img src="POROSITI MODEL PIC 1.jpg" alt="Model photo 1" loading="lazy">
+        <figcaption>07 — MODEL PICTURE 1</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="POROSITI MODEL PIC 2.jpg" alt="Model photo 2" loading="lazy">
+        <figcaption>08 — MODEL PICTURE 2</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="POROSITI MODEL PIC 4.jpg" alt="Model photo 3" loading="lazy">
+        <figcaption>09 — MODEL PICTURE 3</figcaption>
+      </figure>
+
+    </main>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
