@@ -1,60 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kyogre — Project</title>
+  <title>KYOGRE X-500 — Jonathan Kadau</title>
 
-  <!-- Main site styles (for fonts etc.) -->
-  <link rel="stylesheet" href="../style.css">
-
-  <!-- Project-specific styles -->
-  <link rel="stylesheet" href="kyogre.css">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="kyogre.css" />
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
 </head>
-<body>
-  <!-- 🟩 Moving Grid Background -->
+
+<body class="project-page" data-bg="#1A1A1A" data-grid="#F7B267">
   <div class="grid" id="grid"></div>
+  <div class="grain"></div>
 
-  <!-- Left sidebar with back button -->
-  <aside class="sidebar-left">
-    <a href="../index.html" class="back-button">← BACK</a>
-  </aside>
+  <header class="project-topbar">
+    <a class="back-link project" href="../index.html">← BACK</a>
+  </header>
 
-  <!-- Main image gallery -->
-  <main class="gallery">
-    <img src="kyogre1.png" alt="kyogre Concept Image">
-    <img src="kyogre2.png">
-    <img src="https://i.postimg.cc/m22tc5n7/CATARACTAupdated-01.png" alt="Cataracta Render">
-  </main>
+  <div class="project-shell">
+    <!-- Left column -->
+    <aside class="project-meta">
+      <h1 class="project-title">KYOGRE X-500</h1>
 
-  <!-- Right text sidebar -->
-  <aside class="sidebar-right">
-    <div class="text-panel">
-      <h1>KYOGRE X-500</h1>
-      <p>
-        <strong>Cataracta</strong> explores the intersection of form, motion, and sustainability.  
-        The project uses parametric massing strategies to simulate the flow of waterfalls,  
-        transforming natural hydrodynamics into architectural geometry.
+      <div class="project-facts">
+        <p><span class="label">Type</span><span class="value"> Studio / Speculative</span></p>
+        <p><span class="label">Focus</span><span class="value"> Oceanic megastructure</span></p>
+        <p><span class="label">Keywords</span><span class="value"> flotation, machine, territory</span></p>
+      </div>
+
+      <p class="project-description">
+        KYOGRE X-500 is a speculative floating machine operating within the Pacific Ocean.
+        The project imagines an infrastructural entity that occupies, extracts, and stabilizes
+        territory while remaining untethered to land.
       </p>
-      <p>
-        Designed through digital modeling and iterative simulations,  
-        Cataracta challenges the boundary between control and organic formation.
+
+      <p class="project-description muted">
+        The project draws from Archigram-era megastructures and contemporary logistics platforms,
+        treating the ocean as a spatial and political field rather than a void.
       </p>
-    </div>
-  </aside>
+    </aside>
 
-  <script>
-    // --- Moving draggable grid logic ---
-    const grid = document.getElementById('grid');
-    let posX = 0, posY = 0, velocityX = 0.25, velocityY = 0.15;
-    let dragging = false, lastX = 0, lastY = 0;
+    <!-- Right column -->
+    <main class="project-media">
+      <figure class="media-block">
+        <img src="kyogre1.png" alt="Kyogre drawing 01" loading="lazy">
+        <figcaption>01 — DESIGNED POSTER</figcaption>
+      </figure>
 
-    grid.addEventListener('mousedown', e => {
-      dragging = true;
-      lastX = e.clientX;
-      lastY = e.clientY;
-      grid.style.cursor = 'grabbing';
-    });
+      <figure class="media-block">
+        <img src="permutation diagram set 2 [Converted]-02.png" alt="Kyogre drawing 02" loading="lazy">
+        <figcaption>02 — UNDERWATER RENDERING</figcaption>
+      </figure>
 
-    window.addEvent
+      <div class="media-text">
+        <p>
+          This moment in the project marks a shift from overall massing to internal
+          systems. The drawings below focus on section logic, environmental exchange,
+          and structural continuity across the form.
+        </p>
+      </div>
+
+      <figure class="media-block">
+        <img src="permutation diagram set 2 [Converted]-02.png" alt="Kyogre drawing 03" loading="lazy">
+        <figcaption>03 — ON THE OCEAN RENDERING</figcaption>
+      </figure>
+
+      <figure class="media-block">
+        <img src="KYOGRE INTERIOR 1.png" alt="Kyogre interior render 1" loading="lazy">
+        <figcaption>04 — INTERIOR RENDER 1</figcaption>
+      </figure>
+
+      <!-- KEEP EVERYTHING BELOW INSIDE THIS SAME <main> -->
+      <div class="media-text">
+        <p>SURVIVE</p>
+      </div>
+
+      <figure class="media-block">
+        <img src="KYOGRE INTERIOR 2.png" alt="Kyogre interior render 2" loading="lazy">
+        <figcaption>05 — INTERIOR RENDER 2</figcaption>
+      </figure>
+
+      <div class="media-text">
+        <p>COLLECT</p>
+      </div>
+
+      <figure class="media-block">
+        <img src="KYOGRE INTERIOR 3.png" alt="Kyogre interior render 3" loading="lazy">
+        <figcaption>06 — INTERIOR RENDER 3</figcaption>
+      </figure>
+
+      <div class="media-text">
+        <p>CREATE</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
